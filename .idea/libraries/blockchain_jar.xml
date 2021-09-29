@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="blockchain_jar">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../blockchain/out/artifacts/blockchain_jar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../blockchain/out/artifacts/blockchain_jar" recursive="false" />
+  </library>
+</component>
