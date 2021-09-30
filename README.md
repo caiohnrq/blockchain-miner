@@ -1,4 +1,4 @@
-Blockchain Miner Project
+**Blockchain Miner Project**
 
 #TO RUN THE APPLICATION
 
