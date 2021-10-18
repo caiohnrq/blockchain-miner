@@ -3,7 +3,6 @@ package model;
 import com.app.blockchain.model.Blockchain;
 import lombok.extern.java.Log;
 
-import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 
@@ -28,24 +27,20 @@ public class Miner extends Thread{
             t = new Thread(this, getMinerId());
             log.log(Level.INFO, String.format("%s trying to connect to the blockchain ...", getMinerId()));
             blockchain = connectToNode();
-            t.run();
-
+            t.start();
         }
     }
 
     public void run(){
-        synchronized (blockchain) {
-
-            log.log(Level.INFO, String.format("%s started mining ...", getMinerId()));
-            manyBlocks();
-            try {
-                for(var i = 0; i < manyBlocks; i++){
-                    Blockchain.mineBlock();
-                    log.log(Level.INFO, String.format("%s - %s just mined a block", new Date(), getMinerId()));
-                }
-            } catch (Exception e) {
-                log.log(Level.SEVERE, e.getMessage());
+        log.log(Level.INFO, String.format("%s started mining ...", getMinerId()));
+        manyBlocks();
+        try {
+            for(var i = 0; i < manyBlocks; i++){
+                Blockchain.mineBlock(getMinerId());
+                Thread.sleep(new Random().nextInt(100));
             }
+        } catch (Exception e) {
+            log.log(Level.SEVERE, e.getMessage());
         }
     }
 
